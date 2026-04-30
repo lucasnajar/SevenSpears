@@ -1,2 +1,0 @@
-# SevenSpears
-Game Design Group
