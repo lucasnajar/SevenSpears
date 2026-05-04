@@ -1,0 +1,82 @@
+[
+  {
+    "id": "mysterious_altar",
+    "title": "Mysterious Altar",
+    "text": "You find an ancient altar pulsing with dark energy. An inscription reads: 'Sacrifice to gain power.'",
+    "choices": [
+      { "text": "Offer 20 Gold", "effect": "loseGold", "value": 20, "reward": "randomRelic", "resultText": "A relic materializes from the altar's smoke." },
+      { "text": "Sacrifice 15 HP", "effect": "loseHP", "value": 15, "reward": "removeCard", "resultText": "A card is purged from your deck by the altar's power." },
+      { "text": "Leave", "effect": "none", "resultText": "You walk away, the altar's glow fading behind you." }
+    ]
+  },
+  {
+    "id": "trapped_merchant",
+    "title": "Trapped Merchant",
+    "text": "A merchant is caught in a cursed cage. He pleads for help.",
+    "choices": [
+      { "text": "Pay 30 Gold to free him", "effect": "loseGold", "value": 30, "reward": "randomCard", "resultText": "The grateful merchant gives you a random card before fleeing." },
+      { "text": "Try to break the cage (50% chance)", "effect": "chance", "value": 0.5, "reward": "randomRelic", "resultText": "You free the merchant and receive a relic!" },
+      { "text": "Leave him", "effect": "none", "resultText": "You continue on, ignoring his cries." }
+    ]
+  },
+  {
+    "id": "cursed_library",
+    "title": "Cursed Library",
+    "text": "Dusty shelves of forbidden tomes stretch before you. Knowledge beckons.",
+    "choices": [
+      { "text": "Read the dark grimoire", "effect": "gainCard", "reward": "randomCard", "resultText": "You learn a powerful spell from the grimoire." },
+      { "text": "Study protective wards", "effect": "removeCard", "resultText": "You learn to unbind a curse from one of your cards." },
+      { "text": "Burn the library", "effect": "gainGold", "value": 40, "resultText": "The burning books reveal hidden treasure!" }
+    ]
+  },
+  {
+    "id": "wounded_warrior",
+    "title": "Wounded Warrior",
+    "text": "A fellow cursed knight lies injured against the wall. Their armor bears the same curse as yours.",
+    "choices": [
+      { "text": "Heal them (lose 10 HP)", "effect": "loseHP", "value": 10, "reward": "randomRelic", "resultText": "They give you a relic in gratitude before collapsing." },
+      { "text": "Take their equipment", "effect": "gainGold", "value": 25, "resultText": "You salvage 25 gold from their gear." },
+      { "text": "Leave quietly", "effect": "none", "resultText": "You move on, the warrior's fate unknown." }
+    ]
+  },
+  {
+    "id": "shadow_market",
+    "title": "Shadow Market",
+    "text": "A marketplace run by shadowy figures appears from nowhere. Strange deals await.",
+    "choices": [
+      { "text": "Buy mystery box (50 gold)", "effect": "loseGold", "value": 50, "reward": "randomCardUpgrade", "resultText": "A random card in your deck is upgraded!" },
+      { "text": "Sell your blood (lose 20 HP)", "effect": "loseHP", "value": 20, "reward": "gainGold", "rewardValue": 60, "resultText": "You receive 60 gold for your blood." },
+      { "text": "Decline and leave", "effect": "none", "resultText": "The market dissolves into shadows." }
+    ]
+  },
+  {
+    "id": "haunted_chamber",
+    "title": "Haunted Chamber",
+    "text": "Ghosts swirl around you, whispering secrets of the castle's corruption.",
+    "choices": [
+      { "text": "Listen to the whispers", "effect": "chance", "value": 0.6, "reward": "gainGold", "rewardValue": 50, "resultText": "The ghosts reveal hidden gold!" },
+      { "text": "Fight the ghosts", "effect": "combat", "resultText": "You battle the spirits and emerge victorious!" },
+      { "text": "Flee", "effect": "none", "resultText": "You escape with your life but no rewards." }
+    ]
+  },
+  {
+    "id": "cursed_fountain",
+    "title": "Cursed Fountain",
+    "text": "A fountain flows with dark liquid. The curse in your veins resonates with it.",
+    "choices": [
+      { "text": "Drink from it", "effect": "chance", "value": 0.5, "reward": "heal", "rewardValue": 25, "resultText": "The liquid heals your wounds! +25 HP" },
+      { "text": "Throw gold in (20 gold)", "effect": "loseGold", "value": 20, "reward": "removeCard", "resultText": "The fountain purges a card from your deck." },
+      { "text": "Ignore it", "effect": "none", "resultText": "You continue onward." }
+    ]
+  },
+  {
+    "id": "old_graveyard",
+    "title": "Old Graveyard",
+    "text": "Graves stretch before you, some cracked open. One bears your family name.",
+    "choices": [
+      { "text": "Investigate the grave", "effect": "chance", "value": 0.7, "reward": "randomRelic", "resultText": "You find a family heirloom among the bones!" },
+      { "text": "Pay respects (gain 10 HP)", "effect": "heal", "value": 10, "resultText": "You feel a warmth as your ancestors bless you. +10 HP" },
+      { "text": "Move on quickly", "effect": "none", "resultText": "Something about this place unsettles you." }
+    ]
+  }
+]

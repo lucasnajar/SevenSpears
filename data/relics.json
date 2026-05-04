@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cursed_ring",
+    "name": "Cursed Ring",
+    "rarity": "common",
+    "description": "+1 Strength. Lose 1 HP each turn.",
+    "effect": "permanent",
+    "bonuses": { "strength": 1, "hpLossPerTurn": 1 }
+  },
+  {
+    "id": "tarnished_shield",
+    "name": "Tarnished Shield",
+    "rarity": "common",
+    "description": "Gain 3 extra Block from all sources.",
+    "effect": "blockBonus",
+    "bonuses": { "blockBonus": 3 }
+  },
+  {
+    "id": "lucky_charm",
+    "name": "Lucky Charm",
+    "rarity": "common",
+    "description": "10% chance to draw an extra card each turn.",
+    "effect": "drawChance",
+    "bonuses": { "extraDrawChance": 0.1 }
+  },
+  {
+    "id": "blood_amulet",
+    "name": "Blood Amulet",
+    "rarity": "uncommon",
+    "description": "Heal 2 HP whenever you play an Attack card.",
+    "effect": "onAttackPlayed",
+    "bonuses": { "healOnAttack": 2 }
+  },
+  {
+    "id": "void_stone",
+    "name": "Void Stone",
+    "rarity": "uncommon",
+    "description": "Enemies start combat with 1 Weak.",
+    "effect": "combatStart",
+    "bonuses": { "enemyWeakStart": 1 }
+  },
+  {
+    "id": "ancient_tome",
+    "name": "Ancient Tome",
+    "rarity": "uncommon",
+    "description": "Draw 1 extra card each turn.",
+    "effect": "permanent",
+    "bonuses": { "extraDraw": 1 }
+  },
+  {
+    "id": "shadow_cloak",
+    "name": "Shadow Cloak",
+    "rarity": "uncommon",
+    "description": "The first card you play each turn costs 1 less.",
+    "effect": "firstCardDiscount",
+    "bonuses": { "firstCardDiscount": 1 }
+  },
+  {
+    "id": "demon_heart",
+    "name": "Demon Heart",
+    "rarity": "rare",
+    "description": "Once per combat, survive a lethal hit with 1 HP.",
+    "effect": "deathPrevention",
+    "bonuses": { "deathSave": 1 }
+  },
+  {
+    "id": "crown_of_shadows",
+    "name": "Crown of Shadows",
+    "rarity": "rare",
+    "description": "Gain 1 extra Mana each turn.",
+    "effect": "permanent",
+    "bonuses": { "extraMana": 1 }
+  },
+  {
+    "id": "soul_cage",
+    "name": "Soul Cage",
+    "rarity": "rare",
+    "description": "Deal 25% more damage from all sources.",
+    "effect": "damageMultiplier",
+    "bonuses": { "damageMultiplier": 1.25 }
+  }
+]

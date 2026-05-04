@@ -1,0 +1,123 @@
+================================================================================
+  GAME DESIGN DOCUMENT - CURSED CASTLE
+  Roguelike Deckbuilder Web Browser Game
+================================================================================
+
+TEMA
+----
+A dark fantasy dungeon crawler where a cursed knight battles through a corrupted 
+castle to break an ancient curse. The player navigates through 3 floors of 
+increasingly dangerous enemies, collecting cards and relics to grow stronger.
+
+MECÂNICAS PRINCIPAIS
+--------------------
+  - Player HP inicial: 75 HP
+  - Mana por turno: 3 mana
+  - Tamanho da mão: 5 cartas
+  - Deck inicial: 10 cartas (5 Strike, 3 Defend, 1 Heavy Strike, 1 Iron Wall)
+  - Ouro inicial: 50 gold
+
+TIPOS DE CARTA
+--------------
+  - Ataque: causa dano ao inimigo
+  - Defesa: gera escudo (bloqueia dano)
+  - Habilidade: efeitos especiais (cura, draw, buffs)
+  - Poder: efeito passivo contínuo
+
+STATUS EFFECTS
+--------------
+  - Poison: 1 dano por turno por stack
+  - Burn: 2 dano por turno por stack
+  - Weak: -25% dano causado
+  - Vulnerable: +50% dano recebido
+  - Fortify: reduz dano recebido por valor fixo
+  - Strength: +1 dano por ponto
+  - Dexterity: +1 block por ponto
+
+ESTRUTURA DO MAPA
+-----------------
+  - 3 andares (floors)
+  - 6 a 8 nós por andar + boss
+  - Tipos de nó:
+      ⚔  COMBATE NORMAL (45%) — inimigos padrão
+      💀  COMBATE ELITE  (15%) — mais difícil, dá relíquia
+      🏪  LOJA           (10%) — compra cartas/relíquias
+      🔥  FOGUEIRA       (10%) — cura ou upgrade de carta
+      ❓  EVENTO         (20%) — escolha narrativa
+      👑  BOSS           (fim de cada andar)
+
+PROGRESSÃO E RECOMPENSA
+-----------------------
+  - Ao vencer combate: ganhar ouro + escolher 1 carta entre 3
+  - Ao vencer elite: ganhar ouro + relíquia + escolher carta
+  - Ao vencer boss: ganhar ouro + relíquia + acessar próximo andar
+  - Ouro: ganho em combate, gasto na loja
+
+CARTAS (15 total)
+-----------------
+  Comuns (6 ataques + 4 defesas):
+    - Strike: 1 mana, 6 dano
+    - Heavy Strike: 2 mana, 12 dano
+    - Cursed Slash: 1 mana, 8 dano, aplica 2 poison
+    - Defend: 1 mana, 5 block
+    - Iron Wall: 2 mana, 12 block
+    - Shield Bash: 1 mana, 4 block + 5 dano
+
+  Incomuns (2 ataques + 1 defesa + 3 habilidades):
+    - Dark Blade: 2 mana, 14 dano, +1 strength
+    - Shadow Strike: 1 mana, 10 dano, bônus vs vulnerable
+    - Corruption: 0 mana, draw 2, -3 HP
+    - Vampiric Touch: 1 mana, 4 dano, cura 3 HP
+    - Battle Fury: 2 mana, +2 strength, +2 dexterity
+
+  Raras (1 ataque + 1 defesa + 2 poderes):
+    - Soul Rend: 3 mana, 24 dano, aplica 3 burn
+    - Fortify: 2 mana, 15 block, fortify effect
+    - Dark Aura: 3 mana, poder passivo (3 dano/turno)
+    - Cursed Armor: 2 mana, poder passivo (3 block/turno)
+
+INIMIGOS (5 total)
+------------------
+  Normais:
+    - Corrupted Knight: 42 HP, padrão de ataque variado
+    - Dungeon Wraith: 38 HP, aplica vulnerable
+
+  Elites:
+    - Cursed Golem: 80 HP, ataques pesados
+    - Shadow Lord: 75 HP, aplica múltiplos debuffs
+
+  Boss:
+    - The Castle Lord: 150 HP, padrão longo com ataques devastadores
+
+RELÍQUIAS (10 total)
+--------------------
+  Comuns:
+    - Cursed Ring: +1 strength, -1 HP/turno
+    - Tarnished Shield: +3 block de todas as fontes
+    - Lucky Charm: 10% chance de draw extra
+
+  Incomuns:
+    - Blood Amulet: cura 2 HP ao jogar ataque
+    - Void Stone: inimigos começam com 1 weak
+    - Ancient Tome: +1 draw por turno
+    - Shadow Cloak: primeira carta custa 1 menos
+
+  Raras:
+    - Demon Heart: sobrevive 1x com 1 HP por combate
+    - Crown of Shadows: +1 mana por turno
+    - Soul Cage: +25% dano causado
+
+EVENTOS (8 total)
+-----------------
+  - Mysterious Altar: sacrificar ouro ou HP por recompensas
+  - Trapped Merchant: libertar mercador ou arrancar
+  - Cursed Library: aprender feitiços ou queimar livros
+  - Wounded Warrior: ajudar ou roubar cavaleiro ferido
+  - Shadow Market: mercado sombrio com deals misteriosos
+  - Haunted Chamber: fantasmas com segredos ou combate
+  - Cursed Fountain: beber ou ofertar ouro
+  - Old Graveyard: investigar tumba da família
+
+================================================================================
+FIM DO GDD
+================================================================================
