@@ -154,22 +154,18 @@ function dealDamageToEnemy(amount) {
 
 function endPlayerTurn() {
   if (battleState.battleEnded) return;
-  
-  // CORREÇÃO: Zera o block do jogador ANTES de aplicar os poderes passivos
-  // O block do turno anterior já foi usado, agora preparamos o block para o próximo turno
-  battleState.playerBlock = 0;
-  
-  // Aplica poderes passivos (Dark Aura causa dano, Cursed Armor gera block)
+
+  // 1. Aplica poderes passivos (ex.: Dark Aura, Cursed Armor)
   for (const power of battleState.powersActive) {
     if (power.type === 'darkAura') {
       dealDamageToEnemy(power.value);
     }
     if (power.type === 'cursedArmor') {
-      battleState.playerBlock += power.value;
+      battleState.playerBlock += power.value;   // adiciona bloqueio extra antes do ataque inimigo
     }
   }
-  
-  // Processa a intenção do inimigo (ataque, defesa, debuff)
+
+  // 2. Processa a intenção do inimigo (usa o bloqueio atual, incluindo cartas jogadas)
   const intent = battleState.currentIntent;
   if (intent.action === 'attack') {
     let dmg = intent.value;
@@ -192,12 +188,12 @@ function endPlayerTurn() {
   } else if (intent.action === 'weak') {
     applyStatus(battleState.playerStatusEffects, 'weak', intent.value);
   }
-  
-  // Processa efeitos de status (poison, burn) no jogador e inimigo
+
+  // 3. Processa efeitos de status (veneno, queimadura)
   processStatusEffects(battleState.playerStatusEffects, 'player');
   processStatusEffects(battleState.enemyStatusEffects, 'enemy');
-  
-  // Verifica morte do jogador (com relíquia Demon Heart)
+
+  // 4. Verifica mortes
   if (battleState.playerHP <= 0) {
     if (hasRelic('demon_heart') && !battleState.deathSaveUsed) {
       battleState.deathSaveUsed = true;
@@ -211,24 +207,30 @@ function endPlayerTurn() {
     endBattle(true);
     return;
   }
-  
-  // Prepara próximo turno
+
+  // 5. Prepara o próximo turno do jogador
   battleState.turnNumber++;
   battleState.enemy.intentIndex++;
   updateEnemyIntent();
   battleState.mana = battleState.maxMana;
-  // NÃO zerar playerBlock novamente aqui (já foi zerado no início)
+  battleState.playerBlock = 0;                    // bloqueio não acumula entre turnos
   battleState.firstCardPlayedThisTurn = false;
-  
-  // Compra de cartas e efeitos de relíquia
+
+  // Aplica bloqueio passivo para o próximo turno (se desejado)
+  // (Comentado – a Cursed Armor já foi aplicada antes do ataque inimigo.
+  //  Se quiser que ela também dê bloqueio no início do turno do jogador, adicione aqui:
+  // for (const power of battleState.powersActive) {
+  //   if (power.type === 'cursedArmor') battleState.playerBlock += power.value;
+  // }
+
+  // Compra de cartas
   let drawCount = 5;
   const relicBonuses = applyRelicBonuses();
   drawCount += relicBonuses.extraDraw;
   if (hasRelic('lucky_charm') && Math.random() < 0.1) drawCount++;
   battleState.deckManager.discardHand();
   battleState.deckManager.drawCards(drawCount);
-  
-  // Força atualização da UI para mostrar o novo estado (inclusive block)
+
   if (typeof UI !== 'undefined' && UI.renderBattle) {
     UI.renderBattle(battleState);
   }
