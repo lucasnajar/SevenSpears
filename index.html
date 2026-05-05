@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Cursed Castle - Roguelike Deckbuilder</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="message-display"></div>
+
+  <div id="menu-screen" class="screen active">
+    <h1 class="game-title">CURSED CASTLE</h1>
+    <p class="game-subtitle">A cursed knight battles through a corrupted castle to break an ancient curse</p>
+    <div class="menu-buttons">
+      <button id="new-game-btn" class="btn-primary">New Game</button>
+      <button id="load-game-btn" class="btn-primary">Continue</button>
+    </div>
+  </div>
+
+  <div id="map-screen" class="screen">
+    <div class="map-header">
+      <h2 id="current-floor">Floor 1</h2>
+      <div class="map-header-info">
+        <span id="map-player-hp">75/75 HP</span>
+        <span id="map-player-gold">50 Gold</span>
+      </div>
+    </div>
+    <div id="map-container">
+      <svg id="map-connections"></svg>
+    </div>
+  </div>
+
+  <div id="battle-screen" class="screen">
+    <div class="battle-top">
+      <div class="player-stats">
+        <div class="stat-row">
+          <span id="player-sprite">🛡️</span>
+          <span id="player-hp">75/75</span>
+          <div class="hp-bar-container">
+            <div id="player-hp-bar" class="hp-bar" style="width: 100%"></div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <span id="player-block"></span>
+          <span id="player-strength"></span>
+          <span id="player-dexterity"></span>
+        </div>
+        <div id="player-statuses" class="status-badges"></div>
+      </div>
+
+      <div class="enemy-stats">
+        <h3 id="enemy-name">Enemy</h3>
+        <div class="stat-row">
+          <span id="enemy-sprite">👹</span>
+          <span id="enemy-hp">50/50</span>
+          <div class="hp-bar-container">
+            <div id="enemy-hp-bar" class="hp-bar" style="width: 100%"></div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <span id="enemy-block"></span>
+        </div>
+        <div id="enemy-statuses" class="status-badges"></div>
+        <div id="enemy-intent">⚔️ Attack (8)</div>
+      </div>
+    </div>
+
+    <div class="battle-field">
+      <div id="damage-numbers-container"></div>
+    </div>
+
+    <div class="battle-bottom">
+      <div class="mana-display" id="mana-display">
+        <div class="mana-gem"></div>
+        <div class="mana-gem"></div>
+        <div class="mana-gem"></div>
+      </div>
+      <div id="hand-container"></div>
+      <button id="end-turn-btn">End Turn</button>
+    </div>
+  </div>
+
+  <div id="event-screen" class="screen">
+    <div class="event-box">
+      <h2 id="event-title">Event Title</h2>
+      <p id="event-text">Event description goes here.</p>
+      <div id="event-choices"></div>
+      <p id="event-result"></p>
+      <button id="event-continue" class="btn-primary">Continue</button>
+    </div>
+  </div>
+
+  <div id="shop-screen" class="screen">
+    <div class="shop-header">
+      <h2>Merchant's Wares</h2>
+      <p>Gold: <span id="shop-gold">50</span></p>
+    </div>
+    <div id="shop-items"></div>
+    <button id="shop-leave" class="btn-primary" style="margin-top: 2rem;">Leave Shop</button>
+  </div>
+
+  <div id="campfire-screen" class="screen">
+    <div class="campfire-box">
+      <h2>🔥 Campfire</h2>
+      <p>A warm fire crackles before you. You feel a moment of respite from the curse.</p>
+      <div class="campfire-options">
+        <button id="campfire-rest" class="campfire-btn">Rest (Heal 30% HP)</button>
+        <button id="campfire-smith" class="campfire-btn">Smith (Upgrade Card)</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="victory-screen" class="screen">
+    <h2>Victory!</h2>
+    <p class="victory-text">The enemy has been defeated!</p>
+    <div id="victory-rewards"></div>
+    <button id="continue-btn" class="btn-primary">Continue</button>
+  </div>
+
+  <div id="game-over-screen" class="screen">
+    <h2>Defeated</h2>
+    <p class="gameover-text">The curse claims another soul...</p>
+    <button class="btn-primary" onclick="location.reload()">Try Again</button>
+  </div>
+
+  <div id="card-reward-screen" class="screen">
+    <h2>Choose a Reward</h2>
+    <p>Select a card to add to your deck</p>
+    <div id="card-reward-container"></div>
+    <button id="card-reward-skip" class="btn-primary">Skip</button>
+  </div>
+
+  <script src="js/gameState.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/enemies.js"></script>
+  <script src="js/relics.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/deck.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
